@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
 #include <sys/ptrace.h>
@@ -22,6 +23,9 @@ void sleepfunc()
 	while(1)
 	{
 		printf("sleeping...\n");
+    if (fork() == 0) {
+      exit(0);
+    }
 		nanosleep(sleeptime, NULL);
 	}
 
