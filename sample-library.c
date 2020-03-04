@@ -96,12 +96,12 @@ void *doSomeThing(void *arg)
         int i = 1, j = 1;
         plist[0][i] && plist[1][j]; // Quit once either list exhausted
         plist[0][i] < plist[1][j] ? ++i : ++j ) {  // Harmless to step only one or the other list
-        printf("c-%d_%d ", plist[0][i], plist[1][j]); fflush(stdout);
+        // printf("c-%d_%d ", plist[0][i], plist[1][j]); fflush(stdout);
       if ( plist[0][i] == plist[1][j] ) {
           waitpid(plist[0][i], NULL, WNOHANG); // Wait on a common zombie.
           printf("w-%d ", plist[0][i]); fflush(stdout);
+          found = 1;
       }
-      found = 1;
     }
     if (found) { printf("\n"); fflush(stdout); }
   } // Forever.
